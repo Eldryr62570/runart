@@ -3,7 +3,27 @@
 @tailwind utilities;
 
 
+body {
+    background-color: rgb(68 64 60)
+}
+
+.header {
+    background-image: linear-gradient(to top, rgba(2,0,12,0.5) 0%, rgba(2,0,12,0.5) 100%), url('../uploads/bg_01.jpg');
+}
+
 .logo {
     width: 13%;
 
+}
+
+.video {
+    height: 450px;
+}
+
+.profil {
+    shape-outside: inset(1% round 50%);
+}
+
+.oeuvre {
+    width: 30%;
 }
