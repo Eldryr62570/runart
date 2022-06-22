@@ -31,7 +31,7 @@ class Oeuvre
     private $users;
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'oeuvre')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $categorie;
 
     #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'oeuvre')]
