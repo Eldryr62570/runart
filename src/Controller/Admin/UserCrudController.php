@@ -33,14 +33,13 @@ class UserCrudController extends AbstractCrudController
             TextField::new('name')->setLabel("Nom"),
             TextareaField::new('biographie')->setLabel("Biographie"),
             ImageField::new('photo_user')->setLabel("Photo de profl")
-            ->setBasePath('build/')
             ->setUploadDir('public/build/uploads')
             ->setUploadedFileNamePattern('/uploads/[contenthash].[extension]'),
             AssociationField::new('oeuvres'),
         ];
     }
-    // public function configureActions(Actions $actions): Actions
-    // {
-    //     return $actions->setPermission(Action::NEW, 'none');
-    // }
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions->setPermission(Action::NEW, 'none');
+    }
 }

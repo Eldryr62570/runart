@@ -68,8 +68,6 @@ class AppFixtures extends Fixture
             ->addTag($tag);
             $manager->persist($oeuvre);
             $manager->flush();
-
-            
         }
        
 
