@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}RunArt{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -20,20 +20,20 @@
             <div class="pl-5 flex flex-row content-between items-center my-3">
                 <a href="{{ path('index') }}" class="flex flex-row justify-start items-end logo">
                     <img src="{{ asset("build/uploads/logor.png") }}" class="w-1/5">
-                    <h1 class="text-3xl ml-3">RunArt</h1>
+                    <h1 class="text-2xl ml-3">RunArt</h1>
                 </a>
                 
-                <ul class="flex flex-row justify-end items-end space-x-5 text-lg">
-                    <a href=""><li>Qui somes-nous ?</li></a>
+                <ul class="flex flex-row justify-end items-end space-x-5 text-base">
+                    <a href="{{ path('index') }}#presentation"><li>Qui somes-nous ?</li></a>
                     <a href=""><li>Artistes</li></a>
                     <a href=""><li>Catalogues</li></a>
                     <a href=""><li>Evénements</li></a>
-                    <a href=""><li class="bg-orange-100 py-1 px-2 rounded text-black">Contact</li></a>
+                    <a href=""><li class="bg-orange-100 py-1 px-2 rounded text-black ease-in-out duration-300 hover:bg-orange-50">Contact</li></a>
                 </ul>
             </div>
 
             <div class="pr-6 flex flex-row content-between items-center my-3">
-                <ul class="flex flex-row justify-end items-end space-x-5 text-lg">
+                <ul class="flex flex-row justify-end items-end space-x-5 text-base">
                     <a href=""><li>Connexion</li></a>
                     <a href=""><li>Inscription</li></a>
                 </ul>
