@@ -5,20 +5,20 @@
 
 {% block header %}
     <header>
-        <div class="flex flex-col content-center items-center bg-slate-600 text-white">
-            <img src="{{ asset("build/uploads/logor.png") }}" class="w-2/6">
+        <div class="flex flex-col content-center items-center text-white bg-cover bg-center header lg:h-screen">
+            <img src="{{ asset("build/uploads/logor.png") }}" class="w-2/6 mt-6">
 
             <div class="title_top flex flex-col content-center items-center w-1/4 text-center mb-3">
-                <h1 class="bg-slate-600 text-6xl mb-4">RunArt</h1>
+                <h1 class="text-6xl mb-4">RunArt</h1>
                 <p class="text-lg">La première e-galerie de tous les artistes de la Réunion et de l'océan Indien.</p>
-                <a href="{{ path('index') }}#presentation"><h2 class="text-xl hover:bg-orange-100 hover:text-slate-600 rounded-full py-1 px-2 ease-in-out duration-300"><i class="fa-solid fa-chevron-down"></i></h2></a>
+                <a href="{{ path('index') }}#presentation"><h2 class="text-xl hover:bg-orange-100 hover:text-slate-600 rounded-full py-1 px-2 ease-in-out duration-300 mb-4"><i class="fa-solid fa-chevron-down"></i></h2></a>
             </div>
         </div>
     </header>
 {% endblock %}
 
 {% block body %}
-    <div class="presentation w-1/1 bg-stone-700 text-white flex flex-col justify-center items-center" id="presentation">
+    <div class="presentation w-full bg-stone-700 text-white flex flex-col justify-center items-center" id="presentation">
         <h2 class="text-4xl mt-16 mb-7">Qui sommes-nous ?</h2>
 
         <p class="text-lg text-center w-4/5 mb-4"><span class="font-bold">RunArt</span>, est la première e.galerie de la réunion et de l'océan indien, avec comme but de promouvoir les artistes, peintres, sculpteurs, photographes de l'océan Indien. Une double ambition :</p>
@@ -44,6 +44,37 @@
         <div class="title_top flex flex-col content-center items-center w-1/4 text-center mb-3">
             <p class="text-lg">Voir nos artistes</p>
             <a href="{{ path('index') }}#presentation"><h2 class="text-xl hover:bg-orange-100 hover:text-slate-600 rounded-full py-1 px-2 ease-in-out duration-300"><i class="fa-solid fa-chevron-down"></i></h2></a>
+        </div>
+    </div>
+
+    <div class="artiste_unique w-full bg-orange-100 text-black flex flex-col justify-center items-center space-y-16 pb-16" id="artiste_unique">
+        <div class="mt-16 w-5/6">
+            <img src="{{ asset("build/uploads/Marie.jpg") }}" class="rounded-full profil float-left mr-6 w-1/6">
+            <h3 class="text-4xl font-bold mb-3">Marie Coeur</h3>
+            <p class="text-base">Marie Coeur a grandi en Afrique. Arrivée en France pour poursuivre ses études, l’art s’est révélé autant dans l’écriture que dans l’expression picturale. Après les Beaux Arts , l'école de journalisme, elle exerce pendant des années le métier de rédacteur et de journaliste reporteur d’images. Elle s'installe dans l'Océan indien et crée deux entreprises. Suit en parallèle des années d’entreprenariat. De cette vie trépidante et hyper active, une maladie la stoppe net et l’oblige pendant une longue période à fréquenter l’hôpital. L’art devient son remède , un besoin vital. Elle se lance rapidement dans une pratique plus personnelle, qui met en scène les animaux de son enfance. Ils nous captivent et nous transportent dans un monde d'émotion. Elle nous invite à les rejoindre dans leur univers coloré, lumineux jusqu’à en saisir l’âme . La sensibilité habite ses toiles depuis toujours. Vivant entre deux continents sa peinture est comme elle, elle respire la joie, la force et le dynamisme Chaque oeuvre de cette artiste est une histoire, un voyage intérieur : elle s’en va conquérir le monde pour distribuer son message coloré et lumineux d'Afrique, être en harmonie avec la nature, une reconnexion à mère nature, au fragile. Dans ses toiles, seul l’émerveillement compte. Acrylique, sprays est la technique utilisée ne faisant appel ni au collage, ni à l’impression dans la minutie de ces oeuvres.. Son style s'inscrit dans le Pop art et le Street Art. La couleur passion juste pour le plaisir de créer votre émoi et d’observer vos sourires.</p>
+        </div>
+
+        <div class="mb-16 w-11/12 flex flex-row justify-between items-start">
+            <div class="flex flex-col justify-center items-center oeuvre space-y-2">
+                <img src="{{ asset("build/uploads/panpan-60dee8ff40715.jpg") }}" class="w-3/5">
+                <h3 class="font-bold text-2xl">Panpan!</h3>
+                <p>616.00 €</p>
+                <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 73cm</p>
+            </div>
+
+            <div class="flex flex-col justify-center items-center oeuvre space-y-2">
+                <img src="{{ asset("build/uploads/reine-mere-60deeddcd8d4c.jpg") }}" class="w-3/5">
+                <h3 class="font-bold text-2xl">La Reine Mère</h3>
+                <p>616.00 €</p>
+                <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 81cm</p>
+            </div>
+
+            <div class="flex flex-col justify-center items-center oeuvre space-y-2">
+                <img src="{{ asset("build/uploads/see-you-60deedee2dcda.jpg") }}" class="w-3/5">
+                <h3 class="font-bold text-2xl">See You</h3>
+                <p>616.00 €</p>
+                <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 100cm</p>
+            </div>
         </div>
     </div>
 {% endblock %}
