@@ -14,6 +14,32 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %}{% endblock %}
+
+        <div class="navbar flex flex-row justify-between items-center bg-stone-700 text-white sticky top-0">
+            <div class="pl-5 flex flex-row content-between items-center my-3">
+                <a href="{{ path('index') }}" class="flex flex-row justify-start items-end logo">
+                    <img src="{{ asset("build/uploads/logor.png") }}" class="w-1/5">
+                    <h1 class="text-3xl ml-3">RunArt</h1>
+                </a>
+                
+                <ul class="flex flex-row justify-end items-end space-x-5 text-lg">
+                    <a href=""><li>Qui somes-nous ?</li></a>
+                    <a href=""><li>Artistes</li></a>
+                    <a href=""><li>Catalogues</li></a>
+                    <a href=""><li>Evénements</li></a>
+                    <a href=""><li class="bg-orange-100 py-1 px-2 rounded text-black">Contact</li></a>
+                </ul>
+            </div>
+
+            <div class="pr-6 flex flex-row content-between items-center my-3">
+                <ul class="flex flex-row justify-end items-end space-x-5 text-lg">
+                    <a href=""><li>Connexion</li></a>
+                    <a href=""><li>Inscription</li></a>
+                </ul>
+            </div>  
+        </div>
+
         {% block body %}{% endblock %}
     </body>
 </html>
