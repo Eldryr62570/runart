@@ -3,7 +3,15 @@
 @tailwind utilities;
 
 
+body {
+    background-color: rgb(68 64 60)
+}
+
 .logo {
     width: 13%;
 
+}
+
+.video {
+    height: 450px;
 }
