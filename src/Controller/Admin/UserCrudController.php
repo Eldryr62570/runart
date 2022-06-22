@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -35,10 +36,11 @@ class UserCrudController extends AbstractCrudController
             ->setBasePath('build/')
             ->setUploadDir('public/build/uploads')
             ->setUploadedFileNamePattern('/uploads/[contenthash].[extension]'),
+            AssociationField::new('oeuvres'),
         ];
     }
-    public function configureActions(Actions $actions): Actions
-    {
-        return $actions->setPermission(Action::NEW, 'none');
-    }
+    // public function configureActions(Actions $actions): Actions
+    // {
+    //     return $actions->setPermission(Action::NEW, 'none');
+    // }
 }
