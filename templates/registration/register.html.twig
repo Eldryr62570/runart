@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Runart - S'inscrire{% endblock %}
+
+{% block body %}
+    {% form_theme registrationForm 'tailwind_2_layout.html.twig' %}
+
+    <h1>Register</h1>
+    <section>
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.firstname) }}
+        {{ form_row(registrationForm.name) }}
+        {{ form_row(registrationForm.biographie) }}
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+    
+    
+    </section>
+    
+{% endblock %}
