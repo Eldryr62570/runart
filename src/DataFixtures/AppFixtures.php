@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
             ->setName($faker->name())
             ->setIsVerified(1)
             ->setPhotoUser("build/uploads/placeholder.jpg");
-               //Tout les users générés auront comme mdp "test"
+               //Tout les users générés auront comme mdp "1234"
                $plaintextPassword = "1234";
                $hashedPassword = $this->passwordHasher->hashPassword(
                    $user,
@@ -50,7 +50,7 @@ class AppFixtures extends Fixture
             ->setNomCategorie($faker->sentence(3));
             $manager->persist($categorie);
             $manager->flush();
-
+            
             $tag =new Tags();
             $tag->setNomTag($faker->word(1));
             $manager->persist($tag);
@@ -69,8 +69,5 @@ class AppFixtures extends Fixture
             $manager->persist($oeuvre);
             $manager->flush();
         }
-       
-
-        
     }
 }

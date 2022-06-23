@@ -34,7 +34,7 @@ class Oeuvre
     #[ORM\JoinColumn(nullable: true)]
     private $categorie;
 
-    #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'oeuvre')]
+    #[ORM\ManyToMany(targetEntity: Tags::class, inversedBy: 'oeuvre')]
     private $tags;
 
     public function __construct()
@@ -42,7 +42,7 @@ class Oeuvre
         $this->users = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -155,7 +155,10 @@ class Oeuvre
         if ($this->tags->removeElement($tag)) {
             $tag->removeOeuvre($this);
         }
-
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->nom_oeuvre;
     }
 }

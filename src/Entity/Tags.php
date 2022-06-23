@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\TagsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Exception;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TagsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: TagsRepository::class)]
 class Tags
@@ -18,14 +19,15 @@ class Tags
     #[ORM\Column(type: 'string', length: 255)]
     private $nom_tag;
 
-    #[ORM\ManyToMany(targetEntity: Oeuvre::class, inversedBy: 'tags')]
+    #[ORM\ManyToMany(targetEntity: Oeuvre::class, mappedBy: 'tags')]
     private $oeuvre;
 
-    public function __construct()
+    public function __construct($name)
     {
+        $this->nom_tag = $name;
         $this->oeuvre = new ArrayCollection();
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -65,5 +67,9 @@ class Tags
         $this->oeuvre->removeElement($oeuvre);
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->nom_tag;
     }
 }
