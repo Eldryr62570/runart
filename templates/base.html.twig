@@ -41,5 +41,32 @@
         </div>
 
         {% block body %}{% endblock %}
+
+        <div class="footer flex flex-col items-center justify-center bg-stone-700 text-white space-y-6 my-8">
+            <div class="flex flex-row w-full justify-around items-center">
+                <div class="flex flex-col justify-center items-start w-1/5">
+                    <h3 class="text-lg font-medium mb-2">RunArt</h3>
+                    <p>Site de référencement d'oeuvres de la Réunion</p>
+                    <p>Site de vente d'oeuvres de la Réunion</p>
+                </div>
+
+                <div class="flex flex-col justify-center items-center w-1/5">
+                    <img src="{{ asset("build/uploads/logor.png") }}" class="w-2/3">
+                    <h3 class="text-3xl font-medium">RunArt</h3>
+                </div>
+
+                <div class="flex flex-col justify-center items-start w-1/5">
+                    <h3 class="text-lg font-medium mb-2">Contactez-nous</h3>
+                    <p>Adresse e-mail : jcube@gmail.com</p>
+                    <p>Tel : 06 06 06 06 06</p>
+                </div>
+            </div>
+
+            <div class="h-px w-5/6 bg-stone-800 rounded-full"></div>
+
+            <div>
+                <p class="text-sm">© 2019 Copyright: JCUBE, Hemonet Teddy, Moulin Jordan | Tous droits Reservés | Mentions légales | Politique de confidentialité | CGV</p>
+            </div>
+        </div>
     </body>
 </html>
