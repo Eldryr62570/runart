@@ -3,13 +3,16 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Oeuvre;
+use App\Entity\Tags;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class OeuvreCrudController extends AbstractCrudController
 {
@@ -29,8 +32,15 @@ class OeuvreCrudController extends AbstractCrudController
             TextField::new('nom_oeuvre'),
             NumberField::new('prix'),
             TextField::new('description_oeuvre'),
-            AssociationField::new('users')
+            AssociationField::new('categorie'),
+            AssociationField::new('tags')
         ];
     }
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if(!$entityInstance instanceof Oeuvre)return;
+        parent::persistEntity($entityManager,$entityInstance);
+    }
+   
     
 }
