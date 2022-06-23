@@ -28,7 +28,7 @@ class OeuvreCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             ImageField::new('photo_oeuvre')->setLabel("Photo oeuvre")
             ->setUploadDir('public/build/uploads')
-            ->setUploadedFileNamePattern('/uploads/[contenthash].[extension]'),
+            ->setUploadedFileNamePattern('build/uploads/[contenthash].[extension]'),
             TextField::new('nom_oeuvre'),
             NumberField::new('prix'),
             TextField::new('description_oeuvre'),
