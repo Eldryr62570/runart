@@ -69,8 +69,5 @@ class AppFixtures extends Fixture
             $manager->persist($oeuvre);
             $manager->flush();
         }
-       
-
-        
     }
 }
