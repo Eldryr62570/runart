@@ -32,10 +32,22 @@ body {
     width: 100%;
 }
 
+#inscrire div {
+    width: 100%;
+}
+
+#inscrire form {
+    margin-bottom: 3.5rem;
+}
+
 .submit {
     padding: 3px;
     border-radius: 2px;
     margin-top: 10 px;
+}
+
+.sub {
+    margin-top: 20px !important;
 }
 
 textarea {
