@@ -8,6 +8,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -15,7 +17,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(
         Request $request,
-        EntityManagerInterface $manager
+        EntityManagerInterface $manager,
+        MailerInterface $mailer
         ): Response
     {   
         $contact = new Contact();
@@ -27,6 +30,16 @@ class HomeController extends AbstractController
 
             $manager->persist($contact);
             $manager->flush();
+
+            // Email
+
+            $email = (new Email())
+                ->from($contact->getEmail())
+                ->to('admin@runart.com')
+                ->subject($contact->getSubject())
+                ->html($contact->getMessage(), $contact->getName(), $contact->getFirstname(), $contact->getTelephone());
+
+            $mailer->send($email);
 
             $this->addFlash(
                 'success',
