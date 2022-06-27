@@ -53,3 +53,11 @@ textarea {
 .success {
     width: 30% !important;
 }
+
+.login_form {
+    margin-bottom: 2.5rem !important;
+}
+
+input {
+    color: black !important;
+}
