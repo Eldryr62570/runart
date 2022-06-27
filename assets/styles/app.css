@@ -27,3 +27,29 @@ body {
 .oeuvre {
     width: 30%;
 }
+
+#contact div {
+    width: 100%;
+}
+
+.submit {
+    padding: 3px;
+    border-radius: 2px;
+    margin-top: 10 px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.left {
+    width: 60% !important;
+}
+
+.right {
+    width: 40% !important;
+}
+
+.success {
+    width: 30% !important;
+}

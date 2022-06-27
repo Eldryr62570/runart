@@ -57,9 +57,20 @@
         <div class="mb-16 w-11/12 flex flex-row justify-between items-start">
             <div class="flex flex-col justify-center items-center oeuvre space-y-2">
                 <img src="{{ asset("build/uploads/panpan-60dee8ff40715.jpg") }}" class="w-3/5">
+
                 <h3 class="font-bold text-2xl">Panpan!</h3>
+
                 <p>616.00 €</p>
+
                 <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 73cm</p>
+
+                <div class="flex flex-row space-x-2 text-white text-xs w-full">
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+                </div>
             </div>
 
             <div class="flex flex-col justify-center items-center oeuvre space-y-2">
@@ -67,6 +78,14 @@
                 <h3 class="font-bold text-2xl">La Reine Mère</h3>
                 <p>616.00 €</p>
                 <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 81cm</p>
+                
+                <div class="flex flex-row space-x-2 text-white text-xs w-full">
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+                </div>
             </div>
 
             <div class="flex flex-col justify-center items-center oeuvre space-y-2">
@@ -74,7 +93,46 @@
                 <h3 class="font-bold text-2xl">See You</h3>
                 <p>616.00 €</p>
                 <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 100cm</p>
+                
+                <div class="flex flex-row space-x-2 text-white text-xs w-full">
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+
+                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="bg-orange-100 flex flex-col justify-center items-center p-0 mb-10 w-full rounded-none" id="contact">
+        <h2 class="text-4xl mt-8 mb-7">Contact</h2>
+
+        {% for message in app.flashes('success') %}
+            <div class="success flex flex-row justify-center items-center mb-4 bg-lime-300 rounded text-green-900 border border-green-900 p-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {{ form_start(form, {
+            'attr': {
+                'class': 'bg-stone-700 text-white w-1/2 flex flex-col justify-center items-center mb-20 p-4 rounded space-y-2'
+            }
+        }) }}
+            <div class="flex flex-row space-x-2">
+                {{ form_row(form.Name) }}
+                {{ form_row(form.Firstname) }}
+            </div>
+
+            <div class="flex flex-row space-x-2 w-full">
+                <div class="left">
+                    {{ form_row(form.Email) }}
+                </div>
+                
+                <div class="right">
+                    {{ form_row(form.Telephone) }}
+                </div>
+            </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
