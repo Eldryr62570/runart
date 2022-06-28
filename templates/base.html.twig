@@ -17,7 +17,7 @@
         {% block header %}{% endblock %}
 
         <div class="navbar flex flex-row justify-between items-center bg-stone-700 text-white sticky top-0">
-            <div class="pl-5 flex flex-row content-between items-center my-3">
+            <div class="pl-5 flex flex-row content-between items-center my-3 w-3/4">
                 <a href="{{ path('index') }}" class="flex flex-row justify-start items-end logo">
                     <img src="{{ asset("build/uploads/logor.png") }}" class="w-1/5">
                     <h1 class="text-2xl ml-3">RunArt</h1>
@@ -32,10 +32,18 @@
                 </ul>
             </div>
 
-            <div class="pr-6 flex flex-row content-between items-center my-3">
+            <div class="pr-6 flex flex-row justify-end items-center my-3 w-1/4">
                 <ul class="flex flex-row justify-end items-end space-x-5 text-base">
-                    <a href=""><li>Connexion</li></a>
-                    <a href=""><li>Inscription</li></a>
+                    {% if app.user  %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="">Admin</a>
+                        {% endif %}
+                        <a href="">Voir mon profil</a>
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}"><li>Connexion</li></a>
+                        <a href="{{ path('app_register') }}"><li>Inscription</li></a>
+                    {% endif %}
                 </ul>
             </div>  
         </div>
