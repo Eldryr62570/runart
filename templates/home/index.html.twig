@@ -35,8 +35,8 @@
             </div>
 
             <div class="video w-1/2 flex flex-col justify-center items-center">
-                <div class="bg-slate-600 w-5/6 h-80"> 
-                    <p>Ici une vidéo</p>               
+                <div class="w-5/6 h-80"> 
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/E6Rpo8pwWYg" title="LA RÉUNION - Les 100 lieux qu'il faut voir - Documentaire complet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>             
                 </div>
             </div>
         </div>
@@ -47,63 +47,39 @@
         </div>
     </div>
 
-    <div class="artiste_unique w-full bg-orange-100 text-black flex flex-col justify-center items-center space-y-16 pb-16" id="artiste_unique">
-        <div class="mt-16 w-5/6">
-            <img src="{{ asset("build/uploads/Marie.jpg") }}" class="rounded-full profil float-left mr-6 w-1/6">
-            <h3 class="text-4xl font-bold mb-3">Marie Coeur</h3>
-            <p class="text-base">Marie Coeur a grandi en Afrique. Arrivée en France pour poursuivre ses études, l’art s’est révélé autant dans l’écriture que dans l’expression picturale. Après les Beaux Arts , l'école de journalisme, elle exerce pendant des années le métier de rédacteur et de journaliste reporteur d’images. Elle s'installe dans l'Océan indien et crée deux entreprises. Suit en parallèle des années d’entreprenariat. De cette vie trépidante et hyper active, une maladie la stoppe net et l’oblige pendant une longue période à fréquenter l’hôpital. L’art devient son remède , un besoin vital. Elle se lance rapidement dans une pratique plus personnelle, qui met en scène les animaux de son enfance. Ils nous captivent et nous transportent dans un monde d'émotion. Elle nous invite à les rejoindre dans leur univers coloré, lumineux jusqu’à en saisir l’âme . La sensibilité habite ses toiles depuis toujours. Vivant entre deux continents sa peinture est comme elle, elle respire la joie, la force et le dynamisme Chaque oeuvre de cette artiste est une histoire, un voyage intérieur : elle s’en va conquérir le monde pour distribuer son message coloré et lumineux d'Afrique, être en harmonie avec la nature, une reconnexion à mère nature, au fragile. Dans ses toiles, seul l’émerveillement compte. Acrylique, sprays est la technique utilisée ne faisant appel ni au collage, ni à l’impression dans la minutie de ces oeuvres.. Son style s'inscrit dans le Pop art et le Street Art. La couleur passion juste pour le plaisir de créer votre émoi et d’observer vos sourires.</p>
+    {% for user in users|slice(0, 1) %}
+        <div class="artiste_unique w-full bg-orange-100 text-black flex flex-col justify-center items-center space-y-16 pb-16" id="artiste_unique">
+            <div class="mt-16 w-5/6">
+                <img src="{{ user.photouser }}" class="rounded-full profil float-left mr-6 w-1/6">
+                <h3 class="text-4xl font-bold mb-3">{{ user.firstname }} {{ user.name }}</h3>
+                <p class="text-base">{{ user.biographie }}</p>
+            </div>
+
+            <div class="mb-16 w-11/12 flex flex-row justify-between items-start flex-wrap">
+                {% for oeuvre in user.oeuvres|slice(0, 3) %}
+                        <div class="flex flex-col justify-end items-center oeuvre space-y-2">
+                        
+                            <img src="{{ oeuvre.photooeuvre }}" class="w-3/5">
+
+                            <h3 class="font-bold text-2xl">{{ oeuvre.nomoeuvre }}</h3>
+
+                            <p>{{ oeuvre.prix }} €</p>
+
+                            <p>{{ oeuvre.descriptionoeuvre }}</p>
+
+                            <div class="flex flex-row space-x-2 text-white text-xs w-full flex-wrap">
+                                {% for tag in oeuvre.tags %}
+
+                                        <p class="bg-stone-700 rounded px-2 mb-6"><i class="fa-solid fa-tag"></i> {{ tag.nomtag }}</p>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+            <a href="" class="bg-stone-700 text-white rounded p-2 text-lg text-center">En voir plus de cet artiste <i class="fa-solid fa-angle-right"></i></a>
         </div>
-
-        <div class="mb-16 w-11/12 flex flex-row justify-between items-start">
-            <div class="flex flex-col justify-center items-center oeuvre space-y-2">
-                <img src="{{ asset("build/uploads/panpan-60dee8ff40715.jpg") }}" class="w-3/5">
-
-                <h3 class="font-bold text-2xl">Panpan!</h3>
-
-                <p>616.00 €</p>
-
-                <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 73cm</p>
-
-                <div class="flex flex-row space-x-2 text-white text-xs w-full">
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col justify-center items-center oeuvre space-y-2">
-                <img src="{{ asset("build/uploads/reine-mere-60deeddcd8d4c.jpg") }}" class="w-3/5">
-                <h3 class="font-bold text-2xl">La Reine Mère</h3>
-                <p>616.00 €</p>
-                <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 81cm</p>
-                
-                <div class="flex flex-row space-x-2 text-white text-xs w-full">
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col justify-center items-center oeuvre space-y-2">
-                <img src="{{ asset("build/uploads/see-you-60deedee2dcda.jpg") }}" class="w-3/5">
-                <h3 class="font-bold text-2xl">See You</h3>
-                <p>616.00 €</p>
-                <p>Bombe et Acrylique sur toile. Œuvre originale sur châssis ou lithographie signée et numéroté de 1 à 299 (lithographies livrées en rouleau). 100cm x 100cm</p>
-                
-                <div class="flex flex-row space-x-2 text-white text-xs w-full">
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-
-                    <p class="bg-stone-700 rounded px-2"><i class="fa-solid fa-tag"></i> tag</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 
     <div class="bg-orange-100 flex flex-col justify-center items-center p-0 mb-10 w-full rounded-none" id="contact">
         <h2 class="text-4xl mt-8 mb-7">Contact</h2>
