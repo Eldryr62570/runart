@@ -27,3 +27,24 @@ body {
 .oeuvre {
     width: 30%;
 }
+/*Accordeon*/
+#root{
+    height: 100%;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: 100%;
+    grid-gap: 0;
+    height: 100%;
+}
+.grid-items{
+    
+    height: 100%;
+    width: 100%;
+}
+.img-responsive{
+    height : 100%;
+    width: auto;
+    object-fit: cover;
+}
