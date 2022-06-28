@@ -36,7 +36,7 @@
                 <ul class="flex flex-row justify-end items-end space-x-5 text-base">
                     {% if app.user  %}
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a href="">Admin</a>
+                            <a href="{{ path('admin') }}">Admin</a>
                         {% endif %}
                         <a href="">Voir mon profil</a>
                         <a href="{{ path('app_logout') }}">Déconnexion</a>

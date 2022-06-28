@@ -4,16 +4,34 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use App\Repository\TagsRepository;
+use App\Repository\UserRepository;
+use App\Repository\OeuvreRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+    /**
+     * @var UserRepository
+     * @var OeuvreRepository
+     * @var TagsRepository
+     */
+    private $repository_user;
+    private $repository_oeuvre;
+    private $repository_tag;
+
+    public function __construct(UserRepository $repository_user, OeuvreRepository $repository_oeuvre, TagsRepository $repository_tag){
+        $this->repository_user = $repository_user;
+        $this->repository_oeuvre = $repository_oeuvre;
+        $this->repository_tag = $repository_tag;
+    }
+
     #[Route('/', name: 'index')]
     public function index(
         Request $request,
@@ -49,8 +67,15 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
+        $users = $this->repository_user->findAll();
+        $oeuvres = $this->repository_oeuvre->findAll();
+        $tags = $this->repository_tag->findAll();
+
         return $this->render('home/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            "users" => $users,
+            "oeuvres" => $oeuvres,
+            "tags" => $tags
         ]);
     }
 }
