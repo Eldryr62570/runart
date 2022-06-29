@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255,nullable:true)]
     private $photo_user;
 
-    #[ORM\ManyToMany(targetEntity: Oeuvre::class, mappedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Oeuvre::class, inversedBy: 'users')]
     private $oeuvres;
 
     #[ORM\Column(type: 'boolean')]
