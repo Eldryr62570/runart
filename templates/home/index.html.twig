@@ -53,6 +53,11 @@
         </div>
     </div>
 
+    <section class="sectionContainer h-screen">
+        <div id="root"></div>
+    </section>   
+
+
     {% for user in users|slice(0, 1) %}
         <div class="artiste_unique w-full bg-orange-100 text-black flex flex-col justify-center items-center space-y-16 pb-16" id="artiste_unique">
             <div class="mt-16 w-5/6">
@@ -66,18 +71,12 @@
                         <div class="flex flex-col justify-end items-center oeuvre space-y-2">
                         
                             <img src="{{ oeuvre.photooeuvre }}" class="w-3/5">
-
                             <h3 class="font-bold text-2xl">{{ oeuvre.nomoeuvre }}</h3>
-
                             <p>{{ oeuvre.prix }} €</p>
-
                             <p>{{ oeuvre.descriptionoeuvre }}</p>
-
                             <div class="flex flex-row space-x-2 text-white text-xs w-full flex-wrap">
                                 {% for tag in oeuvre.tags %}
-
                                         <p class="bg-stone-700 rounded px-2 mb-6"><i class="fa-solid fa-tag"></i> {{ tag.nomtag }}</p>
-
                                 {% endfor %}
                             </div>
                         </div>
