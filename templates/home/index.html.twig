@@ -83,7 +83,7 @@
                         </div>
                 {% endfor %}
             </div>
-            <a href="" class="bg-stone-700 text-white rounded p-2 text-lg text-center">En voir plus de cet artiste <i class="fa-solid fa-angle-right"></i></a>
+            <a href="{{ path('app_article', {'id': user.id}) }}" class="bg-stone-700 text-white rounded p-2 text-lg text-center">En voir plus de cet artiste <i class="fa-solid fa-angle-right"></i></a>
         </div>
     {% endfor %}
 

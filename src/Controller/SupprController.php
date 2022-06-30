@@ -56,6 +56,6 @@ class SupprController extends AbstractController
             'Votre compte a bien été supprimé.'
         );
 
-        return $this->render('home/profil.html.twig');
+        return $this->redirectToRoute('app_logout');
     }
 }

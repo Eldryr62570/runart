@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 class ProfilController extends AbstractController 
 {
-    #[Route('/profil/{user_id}', name: 'profil', methods: ['GET', "HEAD"])]
+    #[Route('/profil/{user_id}', name: 'profil')]
     #[Entity('users', options: ['id' => 'user_id'])]
     public function index(User $users, Request $request, EntityManagerInterface $manager): Response
     {
