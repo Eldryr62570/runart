@@ -16,7 +16,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('photo_user')
             ->add('firstname', TextType::class, [
                 'attr' => [
                     'class' => 'flex flex-col justify-start items-center w-full text-black border-0 rounded'
