@@ -34,7 +34,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <a href="{{ path('admin') }}">Admin</a>
                         {% endif %}
-                        <a href="{{ path('profil', {'id': app.user.id}) }}">Voir mon profil</a>
+                        <a href="{{ path('profil', {'user_id': app.user.id}) }}">Voir mon profil</a>
                         <a href="{{ path('app_logout') }}">Déconnexion</a>
                     {% else %}
                         <a href="{{ path('app_login') }}"><li>Connexion</li></a>

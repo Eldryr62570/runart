@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Oeuvre;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,8 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SupprController extends AbstractController
 {
+
     #[Route('/suppr_oeuvre/{id}', name: 'suppr_oeuvre', methods: ['GET'])]
-    public function SupprOeuvre(EntityManagerInterface $manager, Oeuvre $oeuvre): Response
+    public function SupprOeuvre(EntityManagerInterface $manager, Oeuvre $oeuvre,): Response
     {
         if(!$oeuvre) {
             $this->addFlash(
@@ -31,7 +33,7 @@ class SupprController extends AbstractController
             'Votre oeuvre a bien été supprimée.'
         );
 
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('profil', ['id' => $this->getUser()->getId()]);
     }
 
     #[Route('/suppr_user/{id}', name: 'suppr_user', methods: ['GET'])]
@@ -54,6 +56,6 @@ class SupprController extends AbstractController
             'Votre compte a bien été supprimé.'
         );
 
-        return $this->redirectToRoute('index');
+        return $this->render('home/profil.html.twig');
     }
 }

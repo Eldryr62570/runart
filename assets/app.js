@@ -72,3 +72,22 @@ span.forEach((f)=>{
     document.getElementById("ModalSupprOeuvre" + f.id).style.display = "none";
   })
 })
+
+// Modal Suppression user
+
+var spane = document.querySelectorAll(".closedom");
+var vide = document.querySelectorAll(".ModifOeuvre");
+
+vide.forEach((g)=>{
+    g.addEventListener("click" , ()=>{
+      console.log("1");
+      document.getElementById("ModalModifOeuvre" + g.id).style.display = "block";
+    })
+})
+
+spane.forEach((h)=>{
+  h.addEventListener("click" , ()=>{
+    console.log("1");
+    document.getElementById("ModalModifOeuvre" + h.id).style.display = "none";
+  })
+})
