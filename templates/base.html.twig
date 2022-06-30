@@ -17,7 +17,7 @@
         {% block header %}{% endblock %}
 
         <div class="navbar flex flex-row justify-between items-center bg-stone-700 text-white sticky top-0">
-            <div class="pl-5 flex flex-row content-between items-center my-3">
+            <div class="pl-5 flex flex-row content-between items-center my-3 w-3/4">
                 <a href="{{ path('index') }}" class="flex flex-row justify-start items-end logo">
                     <img src="{{ asset("build/uploads/logor.png") }}" class="w-1/5">
                     <h1 class="text-2xl ml-3">RunArt</h1>
@@ -28,14 +28,22 @@
                     <a href=""><li>Artistes</li></a>
                     <a href=""><li>Catalogues</li></a>
                     <a href=""><li>Evénements</li></a>
-                    <a href=""><li class="bg-orange-100 py-1 px-2 rounded text-black ease-in-out duration-300 hover:bg-orange-50">Contact</li></a>
+                    <a href="{{ path('index') }}#contact"><li class="bg-orange-100 py-1 px-2 rounded text-black ease-in-out duration-300 hover:bg-orange-50">Contact</li></a>
                 </ul>
             </div>
 
-            <div class="pr-6 flex flex-row content-between items-center my-3">
+            <div class="pr-6 flex flex-row justify-end items-center my-3 w-1/4">
                 <ul class="flex flex-row justify-end items-end space-x-5 text-base">
-                    <a href=""><li>Connexion</li></a>
-                    <a href=""><li>Inscription</li></a>
+                    {% if app.user  %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('admin') }}">Admin</a>
+                        {% endif %}
+                        <a href="">Voir mon profil</a>
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}"><li>Connexion</li></a>
+                        <a href="{{ path('app_register') }}"><li>Inscription</li></a>
+                    {% endif %}
                 </ul>
             </div>  
         </div>
@@ -48,6 +56,9 @@
                     <h3 class="text-lg font-medium mb-2">RunArt</h3>
                     <p>Site de référencement d'oeuvres de la Réunion</p>
                     <p>Site de vente d'oeuvres de la Réunion</p>
+                    <p>Condition générale de ventes</p>
+                    <p>Mentions légales</p>
+                    <p>Livraison et Expédition</p>
                 </div>
 
                 <div class="flex flex-col justify-center items-center w-1/5">
@@ -57,7 +68,7 @@
 
                 <div class="flex flex-col justify-center items-start w-1/5">
                     <h3 class="text-lg font-medium mb-2">Contactez-nous</h3>
-                    <p>Adresse e-mail : jcube@gmail.com</p>
+                    <p>E-mail : runart.commande@gmail.com</p>
                     <p>Tel : 06 06 06 06 06</p>
                 </div>
             </div>

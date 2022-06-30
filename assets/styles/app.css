@@ -27,6 +27,7 @@ body {
 .oeuvre {
     width: 30%;
 }
+
 /*Accordeon*/
 #root{
     height: 100%;
@@ -116,4 +117,51 @@ body {
     justify-self: flex-start;
     width: 80%;
     color: white;
+
+
+#contact div {
+    width: 100%;
+}
+
+#inscrire div {
+    width: 100%;
+}
+
+#inscrire form {
+    margin-bottom: 3.5rem;
+}
+
+.submit {
+    padding: 3px;
+    border-radius: 2px;
+    margin-top: 10 px;
+}
+
+.sub {
+    margin-top: 20px !important;
+}
+
+textarea {
+    height: 100px;
+}
+
+.left {
+    width: 60% !important;
+}
+
+.right {
+    width: 40% !important;
+}
+
+.success {
+    width: 30% !important;
+}
+
+.login_form {
+    margin-bottom: 2.5rem !important;
+}
+
+input {
+    color: black !important;
+
 }
