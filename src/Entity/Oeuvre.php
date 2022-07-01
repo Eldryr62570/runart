@@ -27,7 +27,7 @@ class Oeuvre
     #[ORM\Column(type: 'text', nullable:'true')]
     private $description_oeuvre;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'oeuvres')]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'oeuvres')]
     private $users;
 
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'oeuvre')]

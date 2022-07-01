@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="suppr flex flex-row justify-center items-center bg-lime-300 text-green-900 border border-green-900 p-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="bg-orange-100 flex flex-col w-full justify-center items-center">
+        <h3 class="text-4xl mt-5 mb-6">Mon profil</h3>
+
+        <div class="flex flex-row w-11/12 mb-6">
+            <div class="w-1/2 flex items-center justify-center">
+                <img src="../{{ app.user.photouser }}" class="rounded-full">
+            </div>
+
+            <div class="w-1/2 flex flex-col items-center justify-center">
+                <div class="flex flex-row items-start justify-start space-x-3 px-4">
+                    <div class="w-1/4">
+                        <p>Nom:</p>
+                        <p>Prénom:</p>
+                        <p>Adresse email:</p>
+                        <p>Biographie:</p>
+                    </div>
+
+                    <div class="w-3/4">
+                        <p>{{ app.user.name }}</p>
+                        <p>{{ app.user.firstname }}</p>
+                        <p>{{ app.user.email}}</p>
+                        <p>{{ app.user.biographie }}</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-row mt-10 text-white space-x-3">
+                    <button class="p-2 bg-stone-700 rounded" id="ModifProfil">Modifier mon profil</button>
+
+                    <div id="ModalModifProfil" class="hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto modal">
+                        <div class="w-3/5 flex flex-col bg-orange-100 text-black my-20 mx-auto p-3">
+                            <div class="flex flex-row justify-between items-start">
+                                <h3 class="text-2xl">Modification du profil</h3>
+                                <span class="close cursor-pointer">&times;</span>
+                            </div>
+
+                            <div>
+                                {% if form is defined %}
+                                    {{ form(form, {
+                                        'attr': {
+                                            'class': 'flex flex-col w-full p-4 space-y-2'
+                                        }
+                                    }) }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="p-2 bg-red-700 rounded" id="SupprProfil">Supprimer mon profil</button>
+
+                    <div id="ModalSupprProfil" class="hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto modal">
+                        <div class="w-3/5 flex flex-col bg-orange-100 text-black my-20 mx-auto p-3 rounded">
+                            <div class="flex flex-row justify-between items-start mb-4">
+                                <h3 class="text-2xl">Suppression du profil</h3>
+                            </div>
+
+                            <div class="flex flex-row justify-center items-center mb-4">
+                                <p class="text-xl">Voulez-vous vraiment supprimer votre compte ?</p>
+                            </div>
+
+                            <div class="flex flex-row justify-evenly items-center text-white">
+                                <a href="{{ path("suppr_user", {'id': app.user.id}) }}" class="bg-stone-700 text-lg px-2 py-1 rounded">Oui</a>
+                                <span class="closed bg-stone-700 text-lg px-2 py-1 rounded cursor-pointer">Non</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col w-11/12 space-y-2 mb-10 mt-10">
+            <h3 class="text-3xl mt-5 mb-6">Mes oeuvres</h3>
+
+            {% for message in app.flashes('suppr') %}
+                <div class="suppr flex flex-row justify-center items-center bg-lime-300 text-green-900 border border-green-900 p-3 mb-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <div class="flex flex-row flex-wrap justify-around items-start">
+                {% set i = 0 %}
+                {% set j = 0 %}
+
+                {% for oeuvre in app.user.oeuvres %}
+                {% set i = i+1 %}
+                {% set j = i+1 %}
+                    <div class="w-1/4 flex flex-col items-center space-y-2 mb-2">
+                        <img src="../{{ oeuvre.photooeuvre }}" class="w-3/5">
+                        <p>{{ oeuvre.nomoeuvre }}</p>
+                        <p>{{ oeuvre.prix }} €</p>
+                        <p>{{ oeuvre.categorie.nomcategorie }}</p>
+                        <p>{{ oeuvre.descriptionoeuvre }}</p>
+
+                        <div class="flex flex-row space-x-1 flex-wrap w-full">
+                            {% for tag in oeuvre.tags %}
+                                <p class="bg-stone-700 text-white text-xs py-1 px-2 rounded"><i class="fa-solid fa-tag"></i> {{ tag.nomtag }}</p>
+                            {% endfor %}
+                        </div>
+
+                        <div class="flex flex-row justify-around items-center w-full text-white">
+                            <button class="bg-stone-700 rounded py-2 px-3 ModifOeuvre" id="{{ j }}"><i class="fa-solid fa-pen"></i></button>
+
+                            <div id="ModalModifOeuvre{{ j }}" class="hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto modal">
+                                <div class="w-3/5 flex flex-col bg-orange-100 text-black my-20 mx-auto p-3 rounded">
+                                    <div class="flex flex-row justify-between items-start">
+                                        <h3 class="text-2xl">Modification de l'oeuvre</h3>
+                                        <span class="closedom cursor-pointer" id="{{ j }}">&times;</span>
+                                    </div>
+
+                                    <div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="bg-red-700 rounded py-2 px-3 SupprOeuvre" id="{{ i }}"><i class="fa-solid fa-trash"></i></button>
+
+                            <div id="ModalSupprOeuvre{{ i }}" class="hidden fixed z-10 left-0 top-0 w-full h-full overflow-auto modal">
+                                <div class="w-3/5 flex flex-col bg-orange-100 text-black my-20 mx-auto p-3 rounded">
+                                    <div class="flex flex-row justify-between items-start mb-4">
+                                        <h3 class="text-2xl">Suppression de l'oeuvre</h3>
+                                    </div>
+
+                                    <div class="flex flex-row justify-center items-center mb-4">
+                                        <p class="text-xl">Voulez-vous vraiment supprimer cette oeuvre ?</p>
+                                    </div>
+
+                                    <div class="flex flex-row justify-evenly items-center text-white">
+                                        <a href="{{ path("suppr_oeuvre", {'id': oeuvre.id}) }}" class="bg-stone-700 text-lg px-2 py-1 rounded">Oui</a>
+                                        <span class="closedo bg-stone-700 text-lg px-2 py-1 rounded cursor-pointer" id="{{ i }}">Non</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
