@@ -79,37 +79,84 @@ class Accordeon extends React.Component{
              });
         }  
     }
-    render(){  
-        return (
-            <div className="grid-container">
-                {this.state.categories.map((categorie, index)=>(  
-                        <div className="grid-items"index key={categorie.id} onClick={()=>this.extendDiv(categorie.id)} style={{
-                            width : this.state.categories[index].size,
-                            background : this.state.categories[index].image,
-                            backgroundSize : "fixed",
-                            backgroundPosition : "center"
-                        }}>
-                            <div className="filterBlack" onClick={()=>this.filterBlack(categorie.id)} style={{
-                            opacity : this.state.categories[index].brightness
-                        }}>
-                                <div className="height-50">
-                                    <h3 className="title-items">{this.state.categories[index].title}</h3>
-                                 </div>   
-                                <div className="height-25">
-                                    <div class="artiste-container">Artistes</div>
-                                    <h4 className="title-artiste">{this.state.categories[index].artiste.map((e)=>(<div className="artiste">{e}</div>))}</h4>
-                                 </div>   
-                                <div className="height-25 tags-box">
-                                    <h4 class="budget">Budget : {this.state.categories[index].budget}&nbsp;€ </h4>
-                                    <h4 className="tags-container">{this.state.categories[index].tags.map((e)=>(<div className="tags">{e}&nbsp;<i class="fa-solid fa-tag">&nbsp;</i></div>))}</h4>
-                                 </div>   
-                            </div>
-                                    
-                        </div>
-                ))}
-            </div>
-        );
+    useEffect = () =>{ 
+            const width = window.innerWidth
+            if(width > 700){
+                return true
+            }else{
+                return false
+            }
     }
+    render(){  
+        var AccordeonChoose = ""
+        if(this.useEffect()){
+            AccordeonChoose = <div className="grid-container">
+                    {
+                    this.state.categories.map((categorie, index)=>(  
+                            <div className="grid-items"index key={categorie.id} onClick={()=>this.extendDiv(categorie.id)} style={{
+                                width : this.state.categories[index].size,
+                                background : this.state.categories[index].image,
+                                backgroundSize : "fixed",
+                                backgroundPosition : "center"
+                            }}>
+                                <div className="filterBlack" onClick={()=>this.filterBlack(categorie.id)} style={{
+                                opacity : this.state.categories[index].brightness
+                            }}>
+                                    <div className="height-50">
+                                        <h3 className="title-items">{this.state.categories[index].title}</h3>
+                                     </div>   
+                                    <div className="height-25">
+                                        <div class="artiste-container">Artistes</div>
+                                        <h4 className="title-artiste">{this.state.categories[index].artiste.map((e)=>(<div className="artiste">{e}</div>))}</h4>
+                                     </div>   
+                                    <div className="height-25 tags-box">
+                                        <h4 class="budget">Budget : {this.state.categories[index].budget}&nbsp;€ </h4>
+                                        <h4 className="tags-container">{this.state.categories[index].tags.map((e)=>(<div className="tags">{e}&nbsp;<i class="fa-solid fa-tag">&nbsp;</i></div>))}</h4>
+                                     </div>   
+                                </div>
+                                        
+                            </div>
+                    ))}
+                </div>
+        }else{
+            AccordeonChoose = <div className="grid-container">
+                    {
+                    this.state.categories.map((categorie, index)=>(  
+                            <div className="grid-items"index key={categorie.id} onClick={()=>this.extendDiv(categorie.id)} style={{
+                                height : this.state.categories[index].size,
+                                background : this.state.categories[index].image,
+                                backgroundSize : "fixed",
+                                backgroundPosition : "center"
+                            }}>
+                                <div className="filterBlack" onClick={()=>this.filterBlack(categorie.id)} style={{
+                                opacity : this.state.categories[index].brightness
+                            }}>
+                                    <div className="height-50">
+                                        <h3 className="title-items">{this.state.categories[index].title}</h3>
+                                     </div>   
+                                    <div className="height-25">
+                                        <div class="artiste-container">Artistes</div>
+                                        <h4 className="title-artiste">{this.state.categories[index].artiste.map((e)=>(<div className="artiste">{e}</div>))}</h4>
+                                     </div>   
+                                    <div className="height-25 tags-box">
+                                        <h4 class="budget">Budget : {this.state.categories[index].budget}&nbsp;€ </h4>
+                                        <h4 className="tags-container">{this.state.categories[index].tags.map((e)=>(<div className="tags">{e}&nbsp;<i class="fa-solid fa-tag">&nbsp;</i></div>))}</h4>
+                                     </div>   
+                                </div>
+                                        
+                            </div>
+                    ))}
+                </div>
+        }
+
+
+
+            return (
+                AccordeonChoose
+            );
+      
+    }
+       
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
