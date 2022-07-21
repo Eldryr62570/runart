@@ -194,10 +194,9 @@ input {
     color: black !important;
 }
 
-}
 .sectionContainer{
     height :90vh;
-
+}
 .modal {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */

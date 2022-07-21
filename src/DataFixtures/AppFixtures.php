@@ -43,7 +43,9 @@ class AppFixtures extends Fixture
             $manager->flush();
             
             $users[] = $user;
+          
         }
+
         for ($i=0; $i < 20 ; $i++) { 
             $categorie = new Categorie();
             $categorie->setImageCategorie("build/uploads/placeholder2.jpg")
@@ -51,21 +53,20 @@ class AppFixtures extends Fixture
             $manager->persist($categorie);
             $manager->flush();
             
-            $tag =new Tags();
+            $tag =new Tags("test");
             $tag->setNomTag($faker->word(1));
             $manager->persist($tag);
             $manager->flush();
-
+           
             $oeuvre = new Oeuvre();
             $oeuvre->setDescriptionOeuvre($faker->sentence(8))
             ->setNomOeuvre($faker->word(1))
             ->setPhotoOeuvre("build/uploads/placeholder1.jpg")
             ->setPrix($faker->numberBetween(5000 , 1200000))
-            ->addUser($users[array_rand($users)])
-            ->addUser($users[array_rand($users)])
-            ->addUser($users[array_rand($users)])
             ->setCategorie($categorie)
             ->addTag($tag);
+
+            $users[array_rand($users)]->addOeuvre($oeuvre);
             $manager->persist($oeuvre);
             $manager->flush();
         }

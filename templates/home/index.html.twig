@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Runart{% endblock %}
-
-
+{% block stylesheets %}
+      {{ encore_entry_link_tags('accordeon') }}
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('accordeon') }}
+{% endblock %}
 {% block header %}
     {% for message in app.flashes('suppr_echec') %}
         <div class="suppr flex flex-row justify-center items-center bg-red-400 text-red-600 border border-red-600 p-3">

@@ -88,10 +88,12 @@
             <div class="flex flex-row flex-wrap justify-around items-start">
                 {% set i = 0 %}
                 {% set j = 0 %}
-
+               
                 {% for oeuvre in app.user.oeuvres %}
-                {% set i = i+1 %}
-                {% set j = i+1 %}
+                    
+                    
+                    {% set i = i+1 %}
+                    {% set j = i+1 %}
                     <div class="w-1/4 flex flex-col items-center space-y-2 mb-2">
                         <img src="../{{ oeuvre.photooeuvre }}" class="w-3/5">
                         <p>{{ oeuvre.nomoeuvre }}</p>

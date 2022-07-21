@@ -25,10 +25,8 @@ class ProfilController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $users = $form->getData();
-
             $manager->persist($users);
             $manager->flush();
-
             $this->addFlash(
                 'success',
                 'Votre profil a bien été modifié'

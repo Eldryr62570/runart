@@ -21,10 +21,10 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('accordeon', './assets/accordeon.js')
 
     .copyFiles({
         from: './assets/uploads',
-
         // optional target path, relative to the output dir
         to: 'uploads/[path][name].[ext]',
 

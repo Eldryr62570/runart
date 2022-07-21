@@ -1,0 +1,1 @@
+import './accordeon/accordeon.jsx'
