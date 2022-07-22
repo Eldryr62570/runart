@@ -28,7 +28,7 @@ class ProfilController extends AbstractController
             $manager->persist($users);
             $manager->flush();
             $this->addFlash(
-                'success',
+                'green',
                 'Votre profil a bien été modifié'
             );
         }

@@ -1,6 +1,10 @@
 
-{% for message in app.flashes('success') %}
-    <div class="success flex flex-row justify-center items-center mb-4 bg-lime-300 rounded text-green-900 border border-green-900 p-3">
-        {{ message }}
+{% for label, flash in app.flashes %}
+{% for message in flash %}
+    <div class="flashContainer">
+        <div class="flash bg-{{label}}">
+            {{message}} 
+        </div>
     </div>
+{% endfor %}
 {% endfor %}

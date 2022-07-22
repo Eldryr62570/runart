@@ -11,7 +11,7 @@
         {% endblock %}
     </head>
     <body>
-    {% include "_partials/_flash.html.twig" %}
+   
         {% block header %}{% endblock %}
 
         <div class="navbar flex flex-row justify-between items-center bg-stone-700 text-white sticky top-0 z-50">
@@ -45,7 +45,7 @@
                 </ul>
             </div>  
         </div>
-
+         {% include "_partials/_flash.html.twig" %}
         {% block body %}{% endblock %}
 
         <div class="footer flex flex-col items-center justify-center bg-stone-700 text-white space-y-6 my-8">

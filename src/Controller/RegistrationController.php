@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             $this->addFlash(
-                'success',
+                'green',
                 'Inscription terminée ! Veuillez vous connectez'
             );
             return $this->redirectToRoute('app_login');
